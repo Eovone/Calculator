@@ -17,8 +17,8 @@ while (true)
         return;
     }
 
-        // Add this for presenting the calculation history list with pressing 'h'????!?!??!?
-        // Print out the list of calculationhistory, will be empty at start
+    // Pressing the letter H will direct user to calculationhistory
+    // Print out the list of calculationhistory, will be empty at start
     else if (keyPressed.Key == ConsoleKey.H)
     {
             Console.Clear();
