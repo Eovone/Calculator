@@ -1,4 +1,4 @@
-﻿// En lista för att spara historik för räkningar
+﻿// A list to save the calculations
 List<string> calculationHistoryList = new List<string>() { };
 
 startOfLoop:
@@ -6,19 +6,19 @@ while (true)
 {
     try
     {
-    // Välkomnande meddelande
-    // Option to Exit the program with a keypress.    
+    // Welcoming message and option to view calculation history(H), exit program(Esc) or continue. 
     Console.Clear();
     Console.WriteLine("Welcome to the Calculator!\n\n");
     Console.WriteLine("If you want to Exit program, press Escape.\nTo view your Calculation History press H.\nTo continue press Enter.");
     var keyPressed = Console.ReadKey();
+
+    // Exits program with Esc
     if (keyPressed.Key == ConsoleKey.Escape)
     {
         return;
     }
 
-    // Pressing the letter H will direct user to calculationhistory
-    // Print out the list of calculationhistory, will be empty at start
+    // Print out the list of calculationhistory, will be empty at start, with H
     else if (keyPressed.Key == ConsoleKey.H)
     {
             Console.Clear();
@@ -33,7 +33,7 @@ while (true)
             Console.ReadKey();
     }
 
-    // Användaren matar in tal och matematiska operation
+    // User inputs numbers and operator, only possible with 2 numbers and 1 operator.
     Console.Clear();
     Console.WriteLine("Write TWO numbers and the operator you want to calculate.\nExample: 341+85\t\t" + "Available operators: + - * /" + "\n\nPress Enter to Calculate and Continue.\n");
     string userInput = Console.ReadLine();
@@ -171,17 +171,15 @@ while (true)
 
 
 
+// Pseudokod för uppgiften
 
+// Välkomnande meddelande
+// En lista för att spara historik för räkningar
+// Användaren matar in tal och matematiska operation
 //OBS! Användaren måsta mata in ett tal för att kunna ta sig vidare i programmet!
-
-// Ifall användaren skulle dela 0 med 0 visa Ogiltig inmatning! (gjort)
-
-// Lägga resultat till listan (GJORT)
-
-//Visa resultat (FINNS I SAMTLIGA IF-SATSER)
-
-//Fråga användaren om den vill visa tidigare resultat. (gjort)
-
-//Visa tidigare resultat (GJORT)
-
-//Fråga användaren om den vill avsluta eller fortsätta. (gjort)
+// Ifall användaren skulle dela 0 med 0 visa Ogiltig inmatning!
+// Lägga resultat till listan
+//Visa resultat
+//Fråga användaren om den vill visa tidigare resultat.
+//Visa tidigare resultat
+//Fråga användaren om den vill avsluta eller fortsätta.
