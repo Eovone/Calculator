@@ -9,7 +9,7 @@ while (true)
     // Welcoming message and option to view calculation history(H), exit program(Esc) or continue. 
     Console.Clear();
     Console.WriteLine("Welcome to the Calculator!\n\n");
-    Console.WriteLine("If you want to Exit program, press Escape.\nTo view your Calculation History press H.\nTo continue press Enter.");
+    Console.WriteLine("ESC - To Exit program.\nH - To view Calculation History.\nEnter - To continue.");
     var keyPressed = Console.ReadKey();
 
     // Exits program with Esc
@@ -35,7 +35,7 @@ while (true)
 
     // User inputs numbers and operator, only possible with 2 numbers and 1 operator.
     Console.Clear();
-    Console.WriteLine("Write TWO numbers and the operator you want to calculate.\nExample: 341+85\t\t" + "Available operators: + - * /" + "\n\nPress Enter to Calculate and Continue.\n");
+    Console.WriteLine("Write TWO numbers and the operator you want to calculate.\nExample: 341+85\t\t" + "Available operators: + - * /" + "\n\nEnter - to Calculate and Continue.\n");
     string userInput = Console.ReadLine();
 
 
@@ -159,7 +159,17 @@ while (true)
         Console.WriteLine($"{numberOneDivInt}/{numberTwoDivInt} = {divCalculationDoub}");
         Console.ReadKey();
     }
-}
+
+    // Errormessage if userInput does not cointain + - * /.
+    else
+    {
+        Console.WriteLine("\n*ERROR 404*\nSomething went horribly wrong, try again!\nPress any button to continue.");
+        Console.ReadKey();
+    }
+
+    }
+    
+    
     // Errormessage if the input is not correct
     catch (Exception)
     {
