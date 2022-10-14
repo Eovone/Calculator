@@ -5,7 +5,6 @@
         // A list to save the calculations
         List<string> calculationHistoryList = new List<string>() { };
 
-    startOfLoop:
         while (true)
         {
             try
@@ -25,17 +24,7 @@
                 // Print out the list of calculationhistory, will be empty at start, with H
                 else if (keyPressed.Key == ConsoleKey.H)
                 {
-                    Console.Clear();
-                    Console.WriteLine("*Calculation History*");
-                    Console.WriteLine("Enter - To continue.");
-                    Console.WriteLine("---------------------");
-
-                    foreach (string s in calculationHistoryList)
-                    {
-                        Console.WriteLine(s);
-                    }
-
-                    Console.ReadKey();
+                    CalcHistoryCall();                    
                 }
 
                 // User inputs numbers and operator, only possible with 2 numbers and 1 operator.
@@ -74,13 +63,11 @@
                 {
                     Console.WriteLine("\n*ERROR 404*\nSomething went horribly wrong, try again!\nPress any button to continue.");
                     Console.ReadKey();
-                }
+                }                
 
             }
 
-
-            // Errormessage if the input is not correct
-            catch (DivideByZeroException)
+            catch
             {
                 Console.WriteLine("\n*ERROR 404*\nSomething went horribly wrong, try again!\nPress any button to continue.");
                 Console.ReadKey();
@@ -88,6 +75,7 @@
 
         }
 
+    // Method for calculating 2 numbers with +
     string PlusMethod(string userInput)
         {
             // PLUS Seperate the userInput into two variables
@@ -117,6 +105,7 @@
             return calcHistoryItem;
         }
 
+    // Method for calculating 2 numbers with -
     string MinusMethod(string userInput)
         {
             // MINUS Seperate the userInput into two variables and identify which operator is used
@@ -146,6 +135,7 @@
             return calcHistoryItem;
         }
 
+    // Method for calculating 2 numbers with *
     string MultiMethod(string userInput)
         {
             // MULTIPLICATION Seperate the userInput into two variables and identify which operator is used
@@ -175,6 +165,7 @@
             return calcHistoryItem;
         }
 
+    // Method for calculating 2 numbers with /
     string DivMethod(string userInput)
         {
             // DIVISION Seperate the userInput into two variables and identify which operator is used
@@ -189,13 +180,13 @@
             int numberOneDivInt = int.Parse(numberOneDivTxt);
             int numberTwoDivInt = int.Parse(numberTwoDivTxt);
 
-            /*// Errormessage when user tries to divide with 0. goto startOfLoop if this happens.
+            // Errormessage when user tries to divide with 0.
             if (numberTwoDivInt == 0)
             {
-                Console.WriteLine("You can't divide 0.\nPress any key to continue.");
+                Console.WriteLine("You can't divide with 0.\nPress any key to continue.");
                 Console.ReadKey();
-                return;
-            }*/
+                return userInput;
+            }
 
             // Calculation
             double divCalculationDoub = (double)numberOneDivInt / numberTwoDivInt;
@@ -210,6 +201,22 @@
             Console.ReadKey();
 
             return calcHistoryItem;
+        }
+
+    // Method for showing calcHistoryList
+    void CalcHistoryCall()
+        {
+            Console.Clear();
+            Console.WriteLine("*Calculation History*");
+            Console.WriteLine("Enter - To continue.");
+            Console.WriteLine("---------------------");
+
+            foreach (string s in calculationHistoryList)
+            {
+                Console.WriteLine(s);
+            }
+
+            Console.ReadKey();
         }
     }
     
