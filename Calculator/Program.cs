@@ -79,27 +79,25 @@
     string PlusMethod(string userInput)
         {
             // PLUS Seperate the userInput into two variables
-            int operatorPlusIndex = userInput.IndexOf("+");
-
-            // numberOneTxt is the number before the operator
-            string numberOnePlusTxt = userInput[..operatorPlusIndex];
-            // numberTwoTxt is the number after the operator
-            string numberTwoPlusTxt = userInput[(operatorPlusIndex + 1)..];
+            int operatorIndex = userInput.IndexOf("+");
+            
+            string numberOneTxt = userInput[..operatorIndex];            
+            string numberTwoTxt = userInput[(operatorIndex + 1)..];
 
             // Converting strings of numbers into int so it can be calculated with
-            int numberOnePlusInt = int.Parse(numberOnePlusTxt);
-            int numberTwoPlusInt = int.Parse(numberTwoPlusTxt);
+            int numberOneInt = int.Parse(numberOneTxt);
+            int numberTwoInt = int.Parse(numberTwoTxt);
 
             // Calculation
-            int plusCalculationInt = numberOnePlusInt + numberTwoPlusInt;
+            int calculationInt = numberOneInt + numberTwoInt;
 
             // Converting the result to a string and adding it to the list
-            string plusCalcTxt = Convert.ToString(plusCalculationInt);
-            string calcHistoryItem = $"{numberOnePlusTxt}+{numberTwoPlusTxt} = {plusCalcTxt}";
+            string calcTxt = Convert.ToString(calculationInt);
+            string calcHistoryItem = $"{numberOneTxt}+{numberTwoTxt} = {calcTxt}";
             calculationHistoryList.Add(new string(calcHistoryItem));
 
             // Printing out the calculation and result
-            Console.WriteLine($"{numberOnePlusInt}+{numberTwoPlusInt} = {plusCalculationInt}");
+            Console.WriteLine($"{numberOneInt}+{numberTwoInt} = {calculationInt}");
             Console.ReadKey();
 
             return calcHistoryItem;
@@ -109,27 +107,25 @@
     string MinusMethod(string userInput)
         {
             // MINUS Seperate the userInput into two variables and identify which operator is used
-            int operatorMinusIndex = userInput.IndexOf("-");
-
-            // numberOneTxt is the number before the operator
-            string numberOneMinusTxt = userInput[..operatorMinusIndex];
-            // numberTwoTxt is the number after the operator
-            string numberTwoMinusTxt = userInput[(operatorMinusIndex + 1)..];
+            int operatorIndex = userInput.IndexOf("-");
+            
+            string numberOneTxt = userInput[..operatorIndex];            
+            string numberTwoTxt = userInput[(operatorIndex + 1)..];
 
             // Converting strings of numbers into int so it can be calculated with
-            int numberOneMinusInt = int.Parse(numberOneMinusTxt);
-            int numberTwoMinusInt = int.Parse(numberTwoMinusTxt);
+            int numberOneInt = int.Parse(numberOneTxt);
+            int numberTwoInt = int.Parse(numberTwoTxt);
 
             // Calculation
-            int minusCalculationInt = numberOneMinusInt - numberTwoMinusInt;
+            int calculationInt = numberOneInt - numberTwoInt;
 
             // Converting the result to a string and adding it to the list
-            string minusCalcTxt = Convert.ToString(minusCalculationInt);
-            string calcHistoryItem = $"{numberOneMinusTxt}-{numberTwoMinusTxt} = {minusCalcTxt}";
+            string calcTxt = Convert.ToString(calculationInt);
+            string calcHistoryItem = $"{numberOneTxt}-{numberTwoTxt} = {calcTxt}";
             calculationHistoryList.Add(new string(calcHistoryItem));
 
             // Printing out the calculation and result
-            Console.WriteLine($"{numberOneMinusInt}-{numberTwoMinusInt} = {minusCalculationInt}");
+            Console.WriteLine($"{numberOneInt}-{numberTwoInt} = {calculationInt}");
             Console.ReadKey();
 
             return calcHistoryItem;
@@ -139,27 +135,25 @@
     string MultiMethod(string userInput)
         {
             // MULTIPLICATION Seperate the userInput into two variables and identify which operator is used
-            int operatorMultiIndex = userInput.IndexOf("*");
-
-            // numberOneTxt is the number before the operator
-            string numberOneMultiTxt = userInput[..operatorMultiIndex];
-            // numberTwoTxt is the number after the operator
-            string numberTwoMultiTxt = userInput[(operatorMultiIndex + 1)..];
+            int operatorIndex = userInput.IndexOf("*");
+            
+            string numberOneTxt = userInput[..operatorIndex];            
+            string numberTwoTxt = userInput[(operatorIndex + 1)..];
 
             // Converting strings of numbers into int so it can be calculated with
-            int numberOneMultiInt = int.Parse(numberOneMultiTxt);
-            int numberTwoMultiInt = int.Parse(numberTwoMultiTxt);
+            int numberOneInt = int.Parse(numberOneTxt);
+            int numberTwoInt = int.Parse(numberTwoTxt);
 
             // Calculation
-            int multiCalculationInt = numberOneMultiInt * numberTwoMultiInt;
+            int calculationInt = numberOneInt * numberTwoInt;
 
             // Converting the result to a string and adding it to the list
-            string multiCalcTxt = Convert.ToString(multiCalculationInt);
-            string calcHistoryItem = $"{numberOneMultiTxt}*{numberTwoMultiTxt} = {multiCalcTxt}";
+            string calcTxt = Convert.ToString(calculationInt);
+            string calcHistoryItem = $"{numberOneTxt}*{numberTwoTxt} = {calcTxt}";
             calculationHistoryList.Add(new string(calcHistoryItem));
 
             // Printing out the calculation and result
-            Console.WriteLine($"{numberOneMultiInt}*{numberTwoMultiInt} = {multiCalculationInt}");
+            Console.WriteLine($"{numberOneInt}*{numberTwoInt} = {calculationInt}");
             Console.ReadKey();
 
             return calcHistoryItem;
@@ -169,19 +163,17 @@
     string DivMethod(string userInput)
         {
             // DIVISION Seperate the userInput into two variables and identify which operator is used
-            int operatorDivIndex = userInput.IndexOf("/");
-
-            // numberOneTxt is the number before the operator
-            string numberOneDivTxt = userInput[..operatorDivIndex];
-            // numberTwoTxt is the number after the operator
-            string numberTwoDivTxt = userInput[(operatorDivIndex + 1)..];
+            int operatorIndex = userInput.IndexOf("/");
+            
+            string numberOneTxt = userInput[..operatorIndex];            
+            string numberTwoTxt = userInput[(operatorIndex + 1)..];
 
             // Converting strings of numbers into int so it can be calculated with
-            int numberOneDivInt = int.Parse(numberOneDivTxt);
-            int numberTwoDivInt = int.Parse(numberTwoDivTxt);
+            int numberOneInt = int.Parse(numberOneTxt);
+            int numberTwoInt = int.Parse(numberTwoTxt);
 
             // Errormessage when user tries to divide with 0.
-            if (numberTwoDivInt == 0)
+            if (numberTwoInt == 0)
             {
                 Console.WriteLine("You can't divide with 0.\nPress any key to continue.");
                 Console.ReadKey();
@@ -189,15 +181,15 @@
             }
 
             // Calculation
-            double divCalculationDoub = (double)numberOneDivInt / numberTwoDivInt;
+            double calculationDoub = (double)numberOneInt / numberTwoInt;
 
             // Converting the result to a string and adding it to the list
-            string divCalcTxt = Convert.ToString(divCalculationDoub);
-            string calcHistoryItem = $"{numberOneDivTxt}/{numberTwoDivTxt} = {divCalcTxt}";
+            string calcTxt = Convert.ToString(calculationDoub);
+            string calcHistoryItem = $"{numberOneTxt}/{numberTwoTxt} = {calcTxt}";
             calculationHistoryList.Add(new string(calcHistoryItem));
 
             // Printing out the calculation and result
-            Console.WriteLine($"{numberOneDivInt}/{numberTwoDivInt} = {divCalculationDoub}");
+            Console.WriteLine($"{numberOneInt}/{numberTwoInt} = {calculationDoub}");
             Console.ReadKey();
 
             return calcHistoryItem;
@@ -221,18 +213,3 @@
     }
     
 }
-
-
-
-// Pseudokod för uppgiften
-
-// Välkomnande meddelande
-// En lista för att spara historik för räkningar
-// Användaren matar in tal och matematiska operation
-//OBS! Användaren måsta mata in ett tal för att kunna ta sig vidare i programmet!
-// Ifall användaren skulle dela 0 med 0 visa Ogiltig inmatning!
-// Lägga resultat till listan
-//Visa resultat
-//Fråga användaren om den vill visa tidigare resultat.
-//Visa tidigare resultat
-//Fråga användaren om den vill avsluta eller fortsätta.
