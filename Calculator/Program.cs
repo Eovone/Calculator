@@ -8,13 +8,10 @@
         while (true)
         {
             try
-            {
-                // Welcoming message and option to view calculation history(H), exit program(Esc) or continue. 
-                Console.Clear();
-                Console.WriteLine("Welcome to the Calculator!\n\n*Start View*\n\n");
-                Console.WriteLine("ESC - To Exit program.\nH - To view Calculation History.\nEnter - To continue.");
+            {   
+                // Show StartView where you can see CalcHistory, Exit program or continue.
+                StartView();
                 var keyPressed = Console.ReadKey();
-
                 // Exits program with Esc
                 if (keyPressed.Key == ConsoleKey.Escape)
                 {
@@ -27,10 +24,8 @@
                     CalcHistoryCall();                    
                 }
 
-                // User inputs numbers and operator, only possible with 2 numbers and 1 operator.
-                Console.Clear();
-                Console.WriteLine("*Calculator*\n");
-                Console.WriteLine("Write TWO numbers and the operator you want to calculate.\nExample: 341+85\t\t" + "Available operators: + - * /" + "\n\nEnter - to Calculate and Continue.\n");
+                // Show CalcView where you see instructions for the calculator
+                CalcView();
                 string userInput = Console.ReadLine();
 
 
@@ -61,16 +56,14 @@
                 // Errormessage if userInput does not cointain + - * /.
                 else
                 {
-                    Console.WriteLine("\n*ERROR 404*\nSomething went horribly wrong, try again!\nPress any button to continue.");
-                    Console.ReadKey();
+                    ErrorMessage();
                 }                
 
             }
 
             catch
             {
-                Console.WriteLine("\n*ERROR 404*\nSomething went horribly wrong, try again!\nPress any button to continue.");
-                Console.ReadKey();
+                ErrorMessage();
             }
 
         }
@@ -175,8 +168,8 @@
             // Errormessage when user tries to divide with 0.
             if (numberTwoInt == 0)
             {
-                Console.WriteLine("You can't divide with 0.\nPress any key to continue.");
-                Console.ReadKey();
+                Console.WriteLine("\nYou can't divide with 0.");
+                ErrorMessage();
                 return userInput;
             }
 
@@ -210,6 +203,32 @@
 
             Console.ReadKey();
         }
+
+    // Method for showing StartView
+    void StartView()
+        {
+            // Welcoming message and option to view calculation history(H), exit program(Esc) or continue. 
+            Console.Clear();
+            Console.WriteLine("Welcome to the Calculator!\n\n*Start View*\n\n");
+            Console.WriteLine("ESC - To Exit program.\nH - To view Calculation History.\nEnter - To continue.");
+        }
+
+    // Method for showing StartView
+    void CalcView()
+        {
+            // User inputs numbers and operator, only possible with 2 numbers and 1 operator.
+            Console.Clear();
+            Console.WriteLine("*Calculator*\n");
+            Console.WriteLine("Write TWO numbers and the operator you want to calculate.\nExample: 341+85\t\t" + "Available operators: + - * /" + "\n\nEnter - to Calculate and Continue.\n");
+        }
+
+    // Method for showing ErrorMessage
+    void ErrorMessage()
+        {
+            Console.WriteLine("\n*ERROR 404*\nSomething went horribly wrong, try again!\nPress any button to continue.");
+            Console.ReadKey();
+        }
     }
+    
     
 }
