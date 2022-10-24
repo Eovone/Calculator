@@ -5,10 +5,11 @@
         // A list to save the calculations
         List<string> calculationHistoryList = new List<string>() { };
 
+        // Loop that keeps running and allowing calculations as long as user doesn't choose to exit from StartView.
         while (true)
         {
             try
-            {   
+            {
                 // Show StartView where you can see CalcHistory, Exit program or continue.
                 StartView();
                 var keyPressed = Console.ReadKey();
@@ -21,35 +22,34 @@
                 // Print out the list of calculationhistory, will be empty at start, with H
                 else if (keyPressed.Key == ConsoleKey.H)
                 {
-                    CalcHistoryCall();                    
+                    CalcHistoryCall();
                 }
 
                 // Show CalcView where you see instructions for the calculator
                 CalcView();
                 string userInput = Console.ReadLine();
-
-
-                // Identify which operator is used, this one if " + " is used.
+                
                 if (userInput.Contains("+"))
                 {
+                    // The + method
                     PlusMethod(userInput);
                 }
-
-                // Identify which operator is used, this one if " - " is used.
+                
                 else if (userInput.Contains("-"))
                 {
+                    // The - method
                     MinusMethod(userInput);
                 }
-
-                // Identify which operator is used, this one if " * " is used.
+                
                 else if (userInput.Contains("*"))
                 {
+                    // The * method
                     MultiMethod(userInput);
                 }
-
-                // Identify which operator is used, this one if " / " is used.
+                
                 else if (userInput.Contains("/"))
                 {
+                    // The / method
                     DivMethod(userInput);
                 }
 
@@ -57,7 +57,7 @@
                 else
                 {
                     ErrorMessage();
-                }                
+                }
 
             }
 
@@ -68,13 +68,12 @@
 
         }
 
-    // Method for calculating 2 numbers with +
-    string PlusMethod(string userInput)
+        // Method for calculating and identifying 2 numbers with +
+        string PlusMethod(string userInput)
         {
             // PLUS Seperate the userInput into two variables
             int operatorIndex = userInput.IndexOf("+");
-            
-            string numberOneTxt = userInput[..operatorIndex];            
+            string numberOneTxt = userInput[..operatorIndex];
             string numberTwoTxt = userInput[(operatorIndex + 1)..];
 
             // Converting strings of numbers into int so it can be calculated with
@@ -96,13 +95,12 @@
             return calcHistoryItem;
         }
 
-    // Method for calculating 2 numbers with -
-    string MinusMethod(string userInput)
+        // Method for calculating and identifying 2 numbers with -
+        string MinusMethod(string userInput)
         {
             // MINUS Seperate the userInput into two variables and identify which operator is used
             int operatorIndex = userInput.IndexOf("-");
-            
-            string numberOneTxt = userInput[..operatorIndex];            
+            string numberOneTxt = userInput[..operatorIndex];
             string numberTwoTxt = userInput[(operatorIndex + 1)..];
 
             // Converting strings of numbers into int so it can be calculated with
@@ -124,13 +122,12 @@
             return calcHistoryItem;
         }
 
-    // Method for calculating 2 numbers with *
-    string MultiMethod(string userInput)
+        // Method for calculating and identifying 2 numbers with *
+        string MultiMethod(string userInput)
         {
             // MULTIPLICATION Seperate the userInput into two variables and identify which operator is used
             int operatorIndex = userInput.IndexOf("*");
-            
-            string numberOneTxt = userInput[..operatorIndex];            
+            string numberOneTxt = userInput[..operatorIndex];
             string numberTwoTxt = userInput[(operatorIndex + 1)..];
 
             // Converting strings of numbers into int so it can be calculated with
@@ -152,13 +149,12 @@
             return calcHistoryItem;
         }
 
-    // Method for calculating 2 numbers with /
-    string DivMethod(string userInput)
+        // Method for calculating and identifying 2 numbers with /
+        string DivMethod(string userInput)
         {
             // DIVISION Seperate the userInput into two variables and identify which operator is used
             int operatorIndex = userInput.IndexOf("/");
-            
-            string numberOneTxt = userInput[..operatorIndex];            
+            string numberOneTxt = userInput[..operatorIndex];
             string numberTwoTxt = userInput[(operatorIndex + 1)..];
 
             // Converting strings of numbers into int so it can be calculated with
@@ -188,8 +184,8 @@
             return calcHistoryItem;
         }
 
-    // Method for showing calcHistoryList
-    void CalcHistoryCall()
+        // Method for showing calcHistoryList
+        void CalcHistoryCall()
         {
             Console.Clear();
             Console.WriteLine("*Calculation History*");
@@ -198,14 +194,15 @@
 
             foreach (string s in calculationHistoryList)
             {
+                Thread.Sleep(500);
                 Console.WriteLine(s);
             }
 
             Console.ReadKey();
         }
 
-    // Method for showing StartView
-    void StartView()
+        // Method for showing StartView
+        void StartView()
         {
             // Welcoming message and option to view calculation history(H), exit program(Esc) or continue. 
             Console.Clear();
@@ -213,8 +210,8 @@
             Console.WriteLine("ESC - To Exit program.\nH - To view Calculation History.\nEnter - To continue.");
         }
 
-    // Method for showing StartView
-    void CalcView()
+        // Method for showing StartView
+        void CalcView()
         {
             // User inputs numbers and operator, only possible with 2 numbers and 1 operator.
             Console.Clear();
@@ -222,13 +219,13 @@
             Console.WriteLine("Write TWO numbers and the operator you want to calculate.\nExample: 341+85\t\t" + "Available operators: + - * /" + "\n\nEnter - to Calculate and Continue.\n");
         }
 
-    // Method for showing ErrorMessage
-    void ErrorMessage()
+        // Method for showing ErrorMessage
+        void ErrorMessage()
         {
             Console.WriteLine("\n*ERROR 404*\nSomething went horribly wrong, try again!\nPress any button to continue.");
             Console.ReadKey();
         }
     }
-    
-    
+
+
 }
