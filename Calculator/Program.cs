@@ -1,15 +1,24 @@
-﻿internal class Program
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Runtime.CompilerServices;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
         // A list to save the calculations
         List<string> calculationHistoryList = new List<string>() { };
+        
+        // Welcome message for user
+        WelcomeMessage();
 
         // Loop that keeps running and allowing calculations as long as user doesn't choose to exit from StartView.
         while (true)
         {
             try
             {
+                StartView:
                 // Show StartView where you can see CalcHistory, Exit program or continue.
                 StartView();
                 var keyPressed = Console.ReadKey();
@@ -23,8 +32,9 @@
                 else if (keyPressed.Key == ConsoleKey.H)
                 {
                     CalcHistoryCall();
-                }
-
+                    goto StartView;
+                }                    
+                                
                 // Show CalcView where you see instructions for the calculator
                 CalcView();
                 string userInput = Console.ReadLine();
@@ -56,14 +66,14 @@
                 // Errormessage if userInput does not cointain + - * /.
                 else
                 {
-                    ErrorMessage();
-                }
+                    ErrorMessage();                    
+                }                
 
             }
 
             catch
             {
-                ErrorMessage();
+                ErrorMessage();                
             }
 
         }
@@ -189,7 +199,7 @@
         {
             Console.Clear();
             Console.WriteLine("*Calculation History*");
-            Console.WriteLine("Enter - To continue.");
+            Console.WriteLine("\nEnter - To continue.");
             Console.WriteLine("---------------------");
 
             foreach (string s in calculationHistoryList)
@@ -206,8 +216,8 @@
         {
             // Welcoming message and option to view calculation history(H), exit program(Esc) or continue. 
             Console.Clear();
-            Console.WriteLine("Welcome to the Calculator!\n\n*Start View*\n\n");
-            Console.WriteLine("ESC - To Exit program.\nH - To view Calculation History.\nEnter - To continue.");
+            Console.WriteLine("*Start View*\n");
+            Console.WriteLine("ESC - To Exit program.\nH - To view Calculation History.\nAny other key - To continue.");
         }
 
         // Method for showing StartView
@@ -222,10 +232,33 @@
         // Method for showing ErrorMessage
         void ErrorMessage()
         {
-            Console.WriteLine("\n*ERROR 404*\nSomething went horribly wrong, try again!\nPress any button to continue.");
+            Console.WriteLine("\n*ERROR 404*\nSomething went wrong\nYou will be sent to *Start View*\n\nPress any button to continue.");
             Console.ReadKey();
         }
-    }
 
+        // Method that is a welcomemessage for the user
+        void WelcomeMessage()
+        {
+            string welcomeMessage = "Welcome to the Calculator!";
+
+            for (int i = 0; i < welcomeMessage.Length; i++)
+			    {
+                    Thread.Sleep(75);
+                    Console.Write(welcomeMessage[i]);
+			    }
+
+            Console.WriteLine("\n");
+
+            string pressContinue = "Press Enter to continue.";
+
+            for (int i = 0; i < pressContinue.Length; i++)
+			    {
+                    Thread.Sleep(75);
+                    Console.Write(pressContinue[i]);
+			    }
+
+            Console.ReadLine();
+        }
+    }
 
 }
